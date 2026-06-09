@@ -1,7 +1,7 @@
 const navItems = document.querySelectorAll(".nav-item");
 const views = document.querySelectorAll(".view");
 const title = document.querySelector("#view-title");
-const API_BASE_URL = localStorage.getItem("fitaiApiBaseUrl") || "http://localhost:4000";
+const API_BASE_URL = localStorage.getItem("fitaiApiBaseUrl") || "https://fitai-backend-jge7.onrender.com";
 
 const demoProfile = {
   age: 29,
