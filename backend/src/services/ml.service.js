@@ -1,7 +1,3 @@
-function sigmoid(value) {
-  return 1 / (1 + Math.exp(-value));
-}
-
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
@@ -50,13 +46,28 @@ export function scoreFitnessProfile(profile = {}) {
   const timeBonus = clamp((availableMinutes - 25) * 0.01, -0.12, 0.2);
   const sorenessPenalty = clamp(soreness * 0.055, 0, 0.35);
 
-  const readinessRaw = 0.9 + activity + sleepBonus + timeBonus - bmiPenalty - agePenalty - sorenessPenalty;
-  const readinessScore = Math.round(sigmoid(readinessRaw) * 100);
+  const healthPenalty = hasHealthFlag(profile, ["pain", "injury", "back", "knee", "spine", "acl"]) ? 7 : 0;
+  const ageAdjustment = age < 18 ? -3 : age <= 35 ? 4 : -Math.round(agePenalty * 18);
+  const bmiAdjustment = bmi ? -Math.round(Math.abs(bmi - 23) * 1.8) : -4;
+  const readinessScore = Math.round(
+    clamp(
+      58 +
+        activity * 22 +
+        sleepBonus * 45 +
+        timeBonus * 35 -
+        sorenessPenalty * 40 +
+        ageAdjustment +
+        bmiAdjustment -
+        healthPenalty,
+      30,
+      96
+    )
+  );
 
   const backRisk = hasHealthFlag(profile, ["back", "spine", "slip disc"]) ? 0.22 : 0;
   const kneeRisk = hasHealthFlag(profile, ["knee", "acl", "joint"]) ? 0.18 : 0;
   const injuryRisk = Math.round(
-    clamp(sigmoid(-1.25 + soreness * 0.2 + bmiPenalty + agePenalty + backRisk + kneeRisk) * 100, 5, 95)
+    clamp(18 + soreness * 5 + bmiPenalty * 35 + agePenalty * 25 + backRisk * 100 + kneeRisk * 100, 5, 95)
   );
 
   const intensity =

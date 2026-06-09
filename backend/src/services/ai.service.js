@@ -119,7 +119,13 @@ JSON shape:
 `;
 
   const ai = await callOpenAi(prompt, fallback);
-  return { ...ai, ml };
+  return {
+    ...ai,
+    readinessScore: ml.readinessScore,
+    injuryRisk: ml.injuryRisk,
+    intensity: ml.intensity,
+    ml
+  };
 }
 
 export async function generateCoachReply({ message, profile = {}, context = {} }) {

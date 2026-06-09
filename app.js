@@ -79,6 +79,31 @@ navItems.forEach((item) => {
 const planButton = document.querySelector("#regenerate-plan");
 const readinessScore = document.querySelector(".score-ring strong");
 const insightList = document.querySelector(".insight-list");
+const profileForm = document.querySelector(".profile-form");
+
+function numberFromInput(value, fallback) {
+  const parsed = Number.parseFloat(String(value).replace(/[^\d.-]/g, ""));
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
+function getAssessmentProfile() {
+  if (!profileForm) return demoProfile;
+
+  const data = new FormData(profileForm);
+  const healthText = String(data.get("healthConsiderations") || "").trim();
+
+  return {
+    ...demoProfile,
+    age: numberFromInput(data.get("age"), demoProfile.age),
+    gender: String(data.get("gender") || demoProfile.gender),
+    heightCm: numberFromInput(data.get("heightCm"), demoProfile.heightCm),
+    weightKg: numberFromInput(data.get("weightKg"), demoProfile.weightKg),
+    goal: String(data.get("goal") || demoProfile.goal),
+    activityLevel: String(data.get("activityLevel") || demoProfile.activityLevel),
+    dietPreference: String(data.get("dietPreference") || demoProfile.dietPreference),
+    healthConsiderations: healthText ? [healthText] : []
+  };
+}
 
 const planVariants = [
   {
@@ -117,9 +142,10 @@ planButton?.addEventListener("click", async () => {
   planButton.disabled = true;
 
   try {
+    const assessmentProfile = getAssessmentProfile();
     const assessment = await apiFetch("/api/ai/assessment", {
       method: "POST",
-      body: JSON.stringify(demoProfile)
+      body: JSON.stringify(assessmentProfile)
     });
 
     readinessScore.textContent = assessment.readinessScore;
@@ -127,7 +153,7 @@ planButton?.addEventListener("click", async () => {
       `Training split: ${assessment.workoutPlan?.split || "Personalized weekly training"}.`,
       `Calories: ${assessment.nutritionPlan?.calories || 2180} kcal with ${assessment.nutritionPlan?.proteinGrams || 140} g protein.`,
       `ML injury risk: ${assessment.injuryRisk || assessment.ml?.injuryRisk || 35}%.`,
-      `AI provider: ${assessment.aiProvider || "backend"}.`
+      `Profile analyzed: age ${assessmentProfile.age}, ${assessmentProfile.heightCm} cm, ${assessmentProfile.weightKg} kg, goal ${assessmentProfile.goal}.`
     ];
     insightList.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
   } catch {
