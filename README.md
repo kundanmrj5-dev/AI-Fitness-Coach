@@ -6,7 +6,7 @@ Open `index.html` in a browser to use the frontend. Run the backend from `backen
 
 ## Live Demo
 
-- Website: https://kundanmrj5-dev.github.io/FitAI/
+- Website: https://kundanmrj5-dev.github.io/AI-Fitness-Coach/ 
 - Repository: https://github.com/kundanmrj5-dev/FitAI
 
 ## Screenshot
