@@ -77,7 +77,7 @@
         <section class="view active" id="dashboard" data-title="Dashboard">
           <div class="hero-panel">
             <div class="hero-copy">
-              <p class="eyebrow">Today, 9 June</p>
+              <p class="eyebrow" id="current-date"></p>
               <h2>Discipline builds the body. Motivation only starts it.</h2>
               <p>Train smart today. Every clean rep, steady breath, and finished set moves you closer to the strongest version of yourself.</p>
               <div class="hero-actions">
@@ -495,5 +495,16 @@
     </div>
 
     <script src="./app.js?v=20260611-2"></script>
+    <script>
+const today = new Date();
+
+const options = {
+  day: 'numeric',
+  month: 'long'
+};
+
+document.getElementById('current-date').textContent =
+  `Today, ${today.toLocaleDateString('en-US', options)}`;
+</script>
   </body>
 </html>
