@@ -9,8 +9,6 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![Stars](https://img.shields.io/github/stars/kundanmrj5-dev/AI-Fitness-Coach?style=flat-square)
 ![Last Commit](https://img.shields.io/github/last-commit/kundanmrj5-dev/AI-Fitness-Coach?style=flat-square)
-![License](https://img.shields.io/github/license/kundanmrj5-dev/AI-Fitness-Coach?style=flat-square)
-FitAI is a runnable single-page prototype for an AI-powered fitness and wellness platform.
 FitAI is a runnable single-page prototype for an AI-powered fitness and wellness platform. It covers profile setup, AI assessment, dashboard goals, workout management, nutrition planning, progress analytics, AI chat, subscriptions, and admin operations.
 
 Open `index.html` in a browser to use the frontend. Run the backend from `backend/` to enable AI and ML endpoints.
