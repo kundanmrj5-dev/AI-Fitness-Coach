@@ -1,11 +1,12 @@
 # FitAI - Your Personal AI Fitness Coach
 # FitAI - Your Personal AI Fitness Coach
-
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Machine Learning](https://img.shields.io/badge/Machine_Learning-FF6F00?style=flat-square)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
 
 FitAI is a runnable single-page prototype for an AI-powered fitness and wellness platform.
 FitAI is a runnable single-page prototype for an AI-powered fitness and wellness platform. It covers profile setup, AI assessment, dashboard goals, workout management, nutrition planning, progress analytics, AI chat, subscriptions, and admin operations.
