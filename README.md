@@ -1,5 +1,6 @@
 # FitAI - Your Personal AI Fitness Coach
 🚀 AI-Powered Fitness & Wellness Platform | Personalized Workouts | Nutrition Planning | Progress Analytics
+
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Machine Learning](https://img.shields.io/badge/Machine_Learning-FF6F00?style=flat-square)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
